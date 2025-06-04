@@ -3,6 +3,16 @@ Importing Data
 Michael Royce Tan
 2025-06-04
 
+- [1. Understanding the Working
+  Directory](#1-understanding-the-working-directory)
+- [2. Recommended Project Structure](#2-recommended-project-structure)
+- [3. Accessing Example Data (using dslabs
+  package)](#3-accessing-example-data-using-dslabs-package)
+- [4. Copying the Example File to the Working
+  Directory](#4-copying-the-example-file-to-the-working-directory)
+- [5. Reading the Data (Example - after copying the
+  file)](#5-reading-the-data-example---after-copying-the-file)
+
 ### 1. Understanding the Working Directory
 
 The working directory is where R looks for files by default.
