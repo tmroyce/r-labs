@@ -60,6 +60,45 @@ class(murders_data)
 
     [1] "data.frame"
 
+``` r
+str(murders_data)
+```
+
+    'data.frame':   51 obs. of  5 variables:
+     $ state     : chr  "Alabama" "Alaska" "Arizona" "Arkansas" ...
+     $ abb       : chr  "AL" "AK" "AZ" "AR" ...
+     $ region    : chr  "South" "West" "West" "South" ...
+     $ population: int  4779736 710231 6392017 2915918 37253956 5029196 3574097 897934 601723 19687653 ...
+     $ total     : int  135 19 232 93 1257 65 97 38 99 669 ...
+
+``` r
+# using tidyverse
+murders_tidydata <- read_csv(here("data", "murders.csv"))
+class(murders_tidydata)
+```
+
+    [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame" 
+
+``` r
+str(murders_tidydata)
+```
+
+    spc_tbl_ [51 × 5] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+     $ state     : chr [1:51] "Alabama" "Alaska" "Arizona" "Arkansas" ...
+     $ abb       : chr [1:51] "AL" "AK" "AZ" "AR" ...
+     $ region    : chr [1:51] "South" "West" "West" "South" ...
+     $ population: num [1:51] 4779736 710231 6392017 2915918 37253956 ...
+     $ total     : num [1:51] 135 19 232 93 1257 ...
+     - attr(*, "spec")=
+      .. cols(
+      ..   state = col_character(),
+      ..   abb = col_character(),
+      ..   region = col_character(),
+      ..   population = col_double(),
+      ..   total = col_double()
+      .. )
+     - attr(*, "problems")=<externalptr> 
+
 **Important difference:** R-base import functions generate data frames,
 not tibbles like tidyverse functions do.
 
