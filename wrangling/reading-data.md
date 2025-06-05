@@ -2,15 +2,15 @@
 Michael Royce Tan
 2025-06-05
 
--   [1. Understanding the Working
-    Directory](#understanding-the-working-directory)
--   [2. Recommended Project Structure](#recommended-project-structure)
--   [3. Accessing Example Data (using dslabs
-    package)](#accessing-example-data-using-dslabs-package)
--   [4. Copying the Example File to the Working
-    Directory](#copying-the-example-file-to-the-working-directory)
--   [5. Reading the Data (Example - after copying the
-    file)](#reading-the-data-example---after-copying-the-file)
+- [1. Understanding the Working
+  Directory](#1-understanding-the-working-directory)
+- [2. Recommended Project Structure](#2-recommended-project-structure)
+- [3. Accessing Example Data (using dslabs
+  package)](#3-accessing-example-data-using-dslabs-package)
+- [4. Copying the Example File to the Working
+  Directory](#4-copying-the-example-file-to-the-working-directory)
+- [5. Reading the Data (Example - after copying the
+  file)](#5-reading-the-data-example---after-copying-the-file)
 
 ### 1. Understanding the Working Directory
 
@@ -26,10 +26,10 @@ setwd("~/path/to/your/directory")
 
 Explanation:
 
--   `getwd()`: This function displays the current working directory of
-    your R session.
--   `setwd()`: This function allows you to set a new working directory.
--   RStudio provides a GUI method via the Session menu.
+- `getwd()`: This function displays the current working directory of
+  your R session.
+- `setwd()`: This function allows you to set a new working directory.
+- RStudio provides a GUI method via the Session menu.
 
 ### 2. Recommended Project Structure
 
@@ -83,15 +83,15 @@ list.files(path_to_extdata)
 
 Explanation:
 
--   `install.packages("dslabs")`: Installs the dslabs package if you
-    haven’t already installed it.
--   `library(dslabs)`: Loads the dslabs package, making its functions
-    and datasets available.
--   `system.file("extdata", package = "dslabs")`: This function returns
-    the path to the “extdata” directory within the dslabs package. The
-    path will vary depending on your system.
--   `list.files()`: This function lists all the files within a specified
-    directory.
+- `install.packages("dslabs")`: Installs the dslabs package if you
+  haven’t already installed it.
+- `library(dslabs)`: Loads the dslabs package, making its functions and
+  datasets available.
+- `system.file("extdata", package = "dslabs")`: This function returns
+  the path to the “extdata” directory within the dslabs package. The
+  path will vary depending on your system.
+- `list.files()`: This function lists all the files within a specified
+  directory.
 
 ### 4. Copying the Example File to the Working Directory
 
@@ -138,18 +138,18 @@ file.exists(file.path("data", murders_file))
 
 Explanation:
 
--   `filename <- "murders.csv"`: Specifies the name of the file you want
-    to copy. Replace “murders.csv” with the actual filename you want to
-    use from the previous step.
--   `file.path(path_to_extdata, filename)`: This function constructs the
-    full path to the original file.
--   `file.path()`is preferred over paste() for creating file paths
-    because it automatically handles the correct path separators for
-    your operating system (Windows, macOS, Linux).
--   `file.copy(original_path, getwd())`: Copies the file from its
-    original location to the current working directory.
--   `file.exists(filename)`: Checks if the file now exists in the
-    working directory. Returns TRUE if the file exists, FALSE otherwise.
+- `filename <- "murders.csv"`: Specifies the name of the file you want
+  to copy. Replace “murders.csv” with the actual filename you want to
+  use from the previous step.
+- `file.path(path_to_extdata, filename)`: This function constructs the
+  full path to the original file.
+- `file.path()`is preferred over paste() for creating file paths because
+  it automatically handles the correct path separators for your
+  operating system (Windows, macOS, Linux).
+- `file.copy(original_path, getwd())`: Copies the file from its original
+  location to the current working directory.
+- `file.exists(filename)`: Checks if the file now exists in the working
+  directory. Returns TRUE if the file exists, FALSE otherwise.
 
 ### 5. Reading the Data (Example - after copying the file)
 
@@ -187,10 +187,10 @@ str(murders_data)   # Display the structure of the data frame
 
 Explanation:
 
--   `read.csv("murders.csv")`: Reads the CSV file named “murders.csv”
-    into a data frame called murders.
--   `head(murders)`: Displays the first few rows of the murders data
-    frame. This lets you quickly see the column names and data.
--   `str(murders)`: Displays the structure of the murders data frame,
-    including the data type of each column and the number of rows and
-    columns.
+- `read.csv("murders.csv")`: Reads the CSV file named “murders.csv” into
+  a data frame called murders.
+- `head(murders)`: Displays the first few rows of the murders data
+  frame. This lets you quickly see the column names and data.
+- `str(murders)`: Displays the structure of the murders data frame,
+  including the data type of each column and the number of rows and
+  columns.
