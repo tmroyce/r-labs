@@ -13,6 +13,11 @@ Demonstrates how to download and work with data files from the internet
 using R, following techniques for both direct reading and local file
 management.
 
+``` r
+# Load required library
+library(tidyverse) #readr included
+```
+
 ### 1. Reading Files Directly from URLs
 
 The most straightforward approach is to read data files directly from

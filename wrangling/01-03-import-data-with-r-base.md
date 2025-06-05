@@ -33,6 +33,13 @@ a new object called dat2:
 getwd()
 ```
 
+``` r
+# Load the 'here' package, which helps manage file paths in a project
+# It always starts paths from the project's root folder
+library(here)
+library(tidyverse)
+```
+
 Alternative ways to define the file path to murders.csv (No need to run
 these lines—they’re just for reference)
 

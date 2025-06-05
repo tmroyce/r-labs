@@ -49,7 +49,7 @@ This structure keeps your project organized, especially when working
 with multiple data files. The data folder stores the original, unaltered
 data.
 
-``` r
+``` plaintext
 Project Directory/
 ├── data/           # Place for raw data files
 └── script.R        # Your R script
@@ -128,7 +128,7 @@ if (!dir.exists("data")) {
 file.copy(murders_path, "data")
 ```
 
-    [1] FALSE
+    [1] TRUE
 
 ``` r
 # Check if the file is now in the data directory

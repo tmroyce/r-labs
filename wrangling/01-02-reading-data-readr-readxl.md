@@ -24,6 +24,13 @@ sample datasets.
 ```
 
 ``` r
+# Load required packages
+library(tidyverse)    # includes readr package
+library(readxl)       # for Excel files
+library(dslabs)       # provides sample datasets
+```
+
+``` r
 # Get sample data path and list available files
 extdata_path <- system.file("extdata", package = "dslabs")
 extdata_files <- list.files(extdata_path)
