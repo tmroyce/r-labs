@@ -119,7 +119,7 @@ if (!dir.exists("data")) {
 file.copy(murders_path, "data")
 ```
 
-    [1] TRUE
+    [1] FALSE
 
 ``` r
 # Check if the file is now in the data directory
