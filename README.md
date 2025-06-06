@@ -13,8 +13,8 @@ Contains my notes, code examples, and practice exercises as I learn.
 
 r-labs/
 ├── r-basics/            # R fundamentals, variables, vectors, data frames, functions
-├── project-workflow/    # Project setup, organization, reproducibility, Git, best practices 
-├── data-wrangling/      # Import, clean, transform, reshape data
+├── workflow/            # Project setup, organization, reproducibility, Git, best practices 
+├── wrangling/           # Import, clean, transform, reshape data
 ├── visualization/       # ggplot2, charts, exploratory plots
 ├── statistics/          # Probability, inference, hypothesis testing
 ├── modeling/            # Linear regression, machine learning algorithms, predictive analytics
