@@ -1,6 +1,6 @@
 # Import Data — Downloading Files from the Internet
 Michael Royce
-2025-06-05
+2025-06-06
 
 - [1. Reading Files Directly from
   URLs](#1-reading-files-directly-from-urls)
@@ -9,9 +9,9 @@ Michael Royce
 - [3. Understanding Temporary File
   Functions](#3-understanding-temporary-file-functions)
 
-Demonstrates how to download and work with data files from the internet
-using R, following techniques for both direct reading and local file
-management.
+Download and work with data files from the internet.
+
+Setup
 
 ``` r
 # Load required library
@@ -20,8 +20,8 @@ library(tidyverse) #readr included
 
 ### 1. Reading Files Directly from URLs
 
-The most straightforward approach is to read data files directly from
-their web location without downloading them first.
+Read data files directly from their web location without downloading
+them first.
 
 ``` r
 # Define the URL of the data file
