@@ -17,7 +17,7 @@ library(dslabs)
 data(murders)
 
 # Calculate murder rate per 100,000 people
-murder_rate <- murders$total / murders$population * 100000
+murder_rate <- (murders$total / murders$population) * 100000
 ```
 
 ### 1. Three Indexing Functions
