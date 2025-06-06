@@ -1,4 +1,4 @@
-# Vector Indexing with Logicals
+# R Basics — Vector Indexing with Logicals
 Michael Royce
 2025-06-06
 

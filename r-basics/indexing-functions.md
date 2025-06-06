@@ -1,4 +1,4 @@
-# Indexing Functions
+# R Basics — Indexing Functions
 Michael Royce
 2025-06-06
 
