@@ -22,3 +22,5 @@ Contains my notes, code examples, and practice exercises as I learn.
 ### Tools and Packages
 
 ### Resources
+
+- [Data Wrangling and Visualization with R](https://rafalab.dfci.harvard.edu/dsbook-part-1/)
