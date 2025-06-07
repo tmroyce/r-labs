@@ -79,18 +79,19 @@ corresponding outputs. You’ll need the `dplyr` package for this.
 
 ``` r
 # Example using case_when() to assign grades
-score <- c(92, 85, 78, 62, 95, 88)
+score <- c(92, 85, 78, 62, 95, 88, 40, 45)
 grade <- case_when(
   score >= 90 ~ "A",
   score >= 80 & score < 90 ~ "B",
   score >= 70 & score < 80 ~ "C",
-  score < 70 ~ "D"
+  score >= 50 ~ "D",
+  TRUE ~ "F"  # Default for everything else
 )
 
 grade
 ```
 
-    [1] "A" "B" "C" "D" "A" "B"
+    [1] "A" "B" "C" "D" "A" "B" "F" "F"
 
 - case_when(…): This function evaluates multiple conditions.
 - `score >= 90 ~ "A"`: If the score is greater than or equal to 90,
@@ -113,7 +114,7 @@ grade <- as.factor(grade)
 levels(grade)
 ```
 
-    [1] "A" "B" "C" "D"
+    [1] "A" "B" "C" "D" "F"
 
 ``` r
 # Re-level the factor 
@@ -123,7 +124,7 @@ grade <- relevel(grade, ref = "B")
 levels(grade) 
 ```
 
-    [1] "B" "A" "C" "D"
+    [1] "B" "A" "C" "D" "F"
 
 - `grade <- as.factor(grade)`: Converts the grade variable to a factor.
 - `levels(grade)`: Shows the levels of the factor, and the first one
