@@ -35,7 +35,7 @@ Setup — Load Libraries
 # load the required packages
 library(tidyverse)   # includes readr
 library(readxl)
-library(here)        # optional, prefer to use `here` function
+library(here)        # optional, prefer to use `here()`, builds a file path relative to project’s root directory
 library(dslabs)      # contains the murders dataset
 ```
 
@@ -132,17 +132,17 @@ Make a local copy of the data file in your working directory for easier
 access.
 
 ``` r
-# Copy the file from the dslabs package to your working directory, uncomment below if prefer
-# file.copy(murders_fullpath, getwd())
+# Copy the file from the dslabs package to your working directory, if prefer
+file.copy(murders_fullpath, getwd())  
 
-# Verify the file was copied successfully, if saved in current working directory, uncomment below if prefer
-# file.exists(murders_filename)
+# Verify the file was copied successfully to current working directory, if prefer
+file.exists(murders_filename)
 ```
 
 After copying, you can reference the file by just its name rather than
 the full path.
 
-#### Using `here` function from here package
+#### Optional: Using `here` function from here package (my preference)
 
 ``` r
 # I prefer to use `here` function from here package to copy file to sub-dir, data/ 
@@ -158,17 +158,17 @@ file.exists(here("data", murders_filename))
 
     [1] TRUE
 
+If prefer not to use `here()` function, you can use
+`"relative-path/filename.csv"` instead of `here("data", "murders.csv")`
+
 ### 6. Inspecting File Structure Before Import
 
 Examine the file structure to understand its format and determine the
 appropriate import function.
 
 ``` r
-# Look at the first 3 lines of the file
-# read_lines("murders.csv", n_max = 3)   # `murders.csv` in current working directory, 
-
 # Look at the first 3 lines of the file using `here`
-read_lines(here("data", "murders.csv"), n_max = 3)
+read_lines(here("data", "murders.csv"), n_max = 3)  # or `"relative-path/filename.csv"` if not use `here()`
 ```
 
     [1] "state,abb,region,population,total" "Alabama,AL,South,4779736,135"     
@@ -437,7 +437,7 @@ Save and load processed R data objects for future use.
 save(murders_raw, file = here("rdas", "murders_raw.rda"))
 
 # load the data saved with save()
-load(here("rdas", "murders_raw.rda"))                            # or load("relative-path")
+load(here("rdas", "murders_raw.rda"))
 ```
 
 `saveRDS()` and `readRDS()`
@@ -452,7 +452,7 @@ load(here("rdas", "murders_raw.rda"))                            # or load("rela
 saveRDS(murders_raw, file = here("rdas", "murders_raw.rda"))  # or file = "relative-path"
 
 # load the data saved with saveRDS(), assigning it to a new variable name
-murders_rds <- readRDS(here("rdas", "murders_raw.rda"))         # or readRDS("relative-path")  
+murders_rds <- readRDS(here("rdas", "murders_raw.rda"))
 
 #Verify the contents
 head(murders_rds) # Or any other data inspection command.
