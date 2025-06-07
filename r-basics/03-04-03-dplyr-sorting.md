@@ -1,6 +1,6 @@
 # R Basics — Sorting Data Tables with dplyr
 Michael Royce
-2025-06-06
+2025-06-07
 
 - [1. Order States by Population
   Size](#1-order-states-by-population-size)
@@ -16,7 +16,7 @@ Setup — Load Libraries and Prepare Data
 
 ``` r
 # Install packages if needed (uncomment if not already installed)
-# install.packages(c("tidyverse", "dplyr", "dslabs"))
+# install.packages(c("tidyverse", "dslabs"))
 
 # load the required packages
 library(tidyverse)   # includes dplyr
