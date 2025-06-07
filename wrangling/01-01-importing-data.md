@@ -142,10 +142,10 @@ file.exists(murders_filename)
 After copying, you can reference the file by just its name rather than
 the full path.
 
-#### Optional: Using `here` function from here package (my preference)
+#### Optional: Using `here()` function from here package (my preference)
 
 ``` r
-# I prefer to use `here` function from here package to copy file to sub-dir, data/ 
+# I prefer to use `here()` function from here package to copy file to sub-dir, data/ 
 file.copy(murders_fullpath, here("data"))      
 ```
 
