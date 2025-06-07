@@ -13,6 +13,12 @@ a space where I explore R, one step at a time.
 - **`modeling/`** - Linear regression, machine learning algorithms
 - **`projects/`** - Practice projects combining multiple concepts
 
+### Tools and Packages
+
+### Resources
+
+- [Data Wrangling and Visualization with R](https://rafalab.dfci.harvard.edu/dsbook-part-1/)
+
 ### Contents
 
 **`r-basics/`**
@@ -25,8 +31,4 @@ a space where I explore R, one step at a time.
 - [Using pull() and the Dot Placeholder in R Pipes](r-basics/03-04-02-pull-dot-r-pipes.md)
 - [Sorting Data Tables with dplyr](r-basics/03-04-03-dplyr-sorting.md)
 
-### Tools and Packages
 
-### Resources
-
-- [Data Wrangling and Visualization with R](https://rafalab.dfci.harvard.edu/dsbook-part-1/)
