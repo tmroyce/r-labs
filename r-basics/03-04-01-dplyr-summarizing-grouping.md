@@ -1,4 +1,4 @@
-# Summarizing and Grouping Data with dplyr
+# R Basics — Summarizing and Grouping Data with dplyr
 Michael Royce
 2025-06-06
 

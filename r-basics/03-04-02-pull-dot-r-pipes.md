@@ -1,4 +1,4 @@
-# Using pull() and the Dot Placeholder in R Pipes
+# R Basics — Using pull() and the Dot Placeholder in R Pipes
 Michael Royce
 2025-06-06
 
