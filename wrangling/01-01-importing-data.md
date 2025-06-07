@@ -423,14 +423,12 @@ local copies.
 
 ### 13. Saving and Loading R Objects
 
-Save and load processed R data objects for future use without re-running
-time-consuming operations.
+Save and load processed R data objects for future use.
 
 `save()` and `load()`
 
 - `save()`: Saves one or more R objects to a .rda file, preserving the
-  object names. It creates a binary file representing the R objects.
-  RData is deprecated in favor of rda.
+  object names.
 - `load()`: Loads objects saved with `save()`. The objects are restored
   in your R environment with their original names.
 
