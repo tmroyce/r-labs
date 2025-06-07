@@ -119,7 +119,8 @@ Several R functions help calculate counts and frequencies.
 - `table()`: Provides the number of observations per group.
 - `n()`: Can be used within dplyr verbs to count observations within
   groups.
-- `count()`: Provides the number of observations per group.
+- `count()`: Provides the number of observations per group. `count()`
+  replaces `group_by() + summarize()`
 - `prop.table()`: Provides the proportion of observations per group.
 
 ### 6. Calculating Counts and Percentages with `count()` and `mutate()`
