@@ -1,6 +1,6 @@
 # Preparing for Data Science Project
 Michael Royce
-2025-06-05
+2025-06-10
 
 - [1. Create the Main Projects
   Directory](#1-create-the-main-projects-directory)

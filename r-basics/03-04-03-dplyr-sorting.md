@@ -1,6 +1,6 @@
 # R Basics — Sorting Data Tables with dplyr
 Michael Royce
-2025-06-07
+2025-06-10
 
 - [1. Order States by Population
   Size](#1-order-states-by-population-size)
@@ -38,7 +38,9 @@ most useful.
 
 ``` r
 # Order the states by population size (ascending order by default)
-murders %>% arrange(population) %>% head()
+murders %>% 
+  arrange(population) %>% 
+  head()
 ```
 
                      state abb        region population total       rate
@@ -57,7 +59,9 @@ largest). The `head()` function shows only the first few rows.
 
 ``` r
 # Order the states by murder rate - default is ascending order
-murders %>% arrange(rate) %>% head()
+murders %>% 
+  arrange(rate) %>% 
+  head()
 ```
 
               state abb        region population total      rate
