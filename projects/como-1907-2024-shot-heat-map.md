@@ -118,7 +118,7 @@ ggplot() +
            size = 5, color = "grey50", hjust = 0) 
 ```
 
-![](como-1907-2024-shot-heat-map_files/figure-commonmark/como-2024-shot-map-1.png)
+![](figs/como-2024-shot-map-1.png)
 
 ### 3. Heatmap
 
@@ -147,7 +147,7 @@ ggplot() +
        subtitle = "Density of 'Goals' shot locations")
 ```
 
-![](como-1907-2024-shot-heat-map_files/figure-commonmark/como-2024-heatmap-1.png)
+![](figs/como-2024-heatmap-1.png)
 
 ### 4. Player Stats Table
 
