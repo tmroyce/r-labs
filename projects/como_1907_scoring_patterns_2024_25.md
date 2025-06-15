@@ -108,7 +108,7 @@ ggplot() +
   
   # minimal titles
   labs(
-    title = "Como 1907 — 2024-25 — Team Shot Map", 
+    title = "Como 1907 goal locations — 2024-25 season", 
     subtitle = como.2024.shot.stats.subtitle
   ) +
 
@@ -149,7 +149,7 @@ ggplot() +
     plot.title = element_text(size = 16),
     plot.subtitle = element_text(margin = margin(t = 8, b = 15), size = 13)
     ) +
-  labs(title = "Como 1907 — 2024-25 — Shot Heat Map", 
+  labs(title = "Como 1907 goal scoring zones — 2024-25 season", 
        subtitle = "Density of goals scoring zones")
 ```
 
