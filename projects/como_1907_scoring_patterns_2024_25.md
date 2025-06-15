@@ -202,7 +202,7 @@ ggplot() +
   annotate_pitch(colour = "grey90", fill = "#FCFCF9", limits = FALSE) + 
   
   # Plot all non-goal shots in grey first (bottom layer)
-  geom_point(data = filter(como.2024.team.shot, result != "Goal"),
+  geom_point(data = filter(como.2024.team.shot, result != "Goal", player_id == 12081),
              aes(x = X * 100, y = Y * 100, size = xG),
              color = "grey60", alpha = 0.6) +
   
