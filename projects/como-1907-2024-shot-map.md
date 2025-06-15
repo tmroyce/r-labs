@@ -16,6 +16,8 @@ library(ggplot2)         # Main plotting package
 library(ggsoccer)        # Package for creating soccer/football pitch visualizations
 library(dplyr)           # Data manipulation package
 library(here)            # simplify file paths by anchoring them to your project root
+library(janitor)         # Package for data cleaning and adding total rows to tables
+library(knitr)           # Package for creating formatted tables with kable()
 ```
 
 ### 1. Import Como 1907 team shots data
@@ -115,6 +117,66 @@ ggplot(como.2024.team.shot) +
 ```
 
 ![](como-1907-2024-shot-map_files/figure-commonmark/shot-map-1.png)
+
+``` r
+# Add total row using janitor's adorn_totals function
+como.2024.players.stats.totals <- como.2024.players.stats %>% 
+  select(season, player_name, games, shots, assists, goals) %>% 
+  arrange(desc(goals)) %>% 
+  adorn_totals(
+    where = "row", 
+    fill = "Total", 
+    name = "Total",
+    shots, assists, goals,
+    na.rm = TRUE) %>% 
+  kable(
+    col.names = c("Season", "Player", "Games", "Shots", "Assists", "Goals")
+  )
+
+como.2024.players.stats.totals
+```
+
+| Season    | Player                 | Games | Shots | Assists | Goals |
+|:----------|:-----------------------|:------|------:|--------:|------:|
+| 2024/2025 | Assane Diao            | 15    |    28 |       1 |     8 |
+| 2024/2025 | Patrick Cutrone        | 33    |    69 |       4 |     7 |
+| 2024/2025 | Gabriel Strefezza      | 37    |    57 |       4 |     6 |
+| 2024/2025 | Nico Paz               | 35    |   110 |       8 |     6 |
+| 2024/2025 | Lucas Da Cunha         | 36    |    37 |       2 |     3 |
+| 2024/2025 | Andrea Belotti         | 18    |    19 |       0 |     2 |
+| 2024/2025 | Jonathan Ikone         | 13    |    16 |       0 |     2 |
+| 2024/2025 | Maxence Caqueret       | 18    |     8 |       3 |     2 |
+| 2024/2025 | Tasos Douvikas         | 13    |    14 |       2 |     2 |
+| 2024/2025 | Edoardo Goldaniga      | 32    |    12 |       0 |     1 |
+| 2024/2025 | Luca Mazzitelli        | 11    |     7 |       1 |     1 |
+| 2024/2025 | Mergim Vojvoda         | 11    |     4 |       2 |     1 |
+| 2024/2025 | Yannick Engelhardt     | 26    |     8 |       1 |     1 |
+| 2024/2025 | Alessandro Gabrielloni | 15    |     5 |       1 |     1 |
+| 2024/2025 | Alieu Fadera           | 28    |    28 |       3 |     1 |
+| 2024/2025 | Alberto Moreno         | 24    |    14 |       0 |     0 |
+| 2024/2025 | Dele Alli              | 1     |     0 |       0 |     0 |
+| 2024/2025 | Daniele Baselli        | 2     |     0 |       0 |     0 |
+| 2024/2025 | Emil Audero            | 8     |     1 |       0 |     0 |
+| 2024/2025 | Federico Barba         | 7     |     2 |       0 |     0 |
+| 2024/2025 | José Reina             | 12    |     0 |       0 |     0 |
+| 2024/2025 | Simone Verdi           | 9     |     2 |       0 |     0 |
+| 2024/2025 | Sergi Roberto          | 13    |     6 |       1 |     0 |
+| 2024/2025 | Marc-Oliver Kempf      | 31    |    20 |       0 |     0 |
+| 2024/2025 | Alberto Cerri          | 5     |     4 |       0 |     0 |
+| 2024/2025 | Jean Butez             | 19    |     0 |       0 |     0 |
+| 2024/2025 | Ben Kone               | 4     |     1 |       0 |     0 |
+| 2024/2025 | Oliver Abildgaard      | 1     |     0 |       0 |     0 |
+| 2024/2025 | Máximo Perrone         | 26    |    10 |       3 |     0 |
+| 2024/2025 | Alberto Dossena        | 23    |    12 |       2 |     0 |
+| 2024/2025 | Álex Valle             | 15    |     9 |       0 |     0 |
+| 2024/2025 | Marco Sala             | 8     |     0 |       0 |     0 |
+| 2024/2025 | Matthias Braunöder     | 8     |     2 |       0 |     0 |
+| 2024/2025 | Alessio Iovine         | 10    |     1 |       0 |     0 |
+| 2024/2025 | Ali Jasim              | 2     |     0 |       0 |     0 |
+| 2024/2025 | Ignace Van der Brempt  | 20    |     7 |       1 |     0 |
+| 2024/2025 | Fellipe Jack           | 7     |     0 |       0 |     0 |
+| 2024/2025 | Ivan Smolcic           | 9     |     7 |       0 |     0 |
+| Total     | Total                  | Total |   520 |      39 |    44 |
 
 Reference:
 
