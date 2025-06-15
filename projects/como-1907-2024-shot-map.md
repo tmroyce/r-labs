@@ -21,8 +21,23 @@ library(here)            # simplify file paths by anchoring them to your project
 ### 1. Import Como 1907 team shots data
 
 ``` r
-# Load Como 1907 team shots data (data from understat)
+# Load como 1907 team shots data (data from understat) 
 como.2024.team.shot <- readRDS(here("data", "raw", "ustat-como-2024-team-shot.rds"))
+
+# Load como players data
+como.2024.players.stats <- readRDS(here("data", "raw", "ustat-como-2024-tp-stats-url.rds"))
+
+# filter to only como players -- data includes data from other teams that como has played against
+como.2024.team.shot <- como.2024.team.shot %>%
+  mutate(player_id = as.numeric(player_id)) %>% 
+  semi_join(
+    como.2024.players.stats %>% 
+    select(player_id), by = c("player_id" = "player_id"))
+
+# alternatively
+# como.2024.team.shot <- como.2024.team.shot %>%
+#   mutate(player_id = as.numeric(player_id)) %>% 
+#   filter(player_id %in% como.2024.players$player_id)
 ```
 
 ### 2. Create plot visualizing team shots data
@@ -35,6 +50,7 @@ como.2024.shots.not.shown <- como.2024.team.shot %>%
 
 # Calculate descriptive statistics
 como.2024.shot.stats <- como.2024.team.shot %>%
+  filter(!is.na(result)) %>% 
   summarise(
     total.shots = n(),
     goals = sum(result == "Goal"),
@@ -47,7 +63,6 @@ como.2024.shot.stats.subtitle <- paste0(
   "Total Shots: ", como.2024.shot.stats$total.shots, " | ",
   "Conversion: ", como.2024.shot.stats$conversion.rate, "%"
 )
-
 
 # Create the half-pitch shot map (minimal)
 ggplot(como.2024.team.shot) +
