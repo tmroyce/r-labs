@@ -33,7 +33,7 @@ como.2024.shots.not.shown <- como.2024.team.shot %>%
   filter(X * 100 < 50) %>% 
   nrow()
 
-# Calculate descriptive statistics first
+# Calculate descriptive statistics
 como.2024.shot.stats <- como.2024.team.shot %>%
   summarise(
     total.shots = n(),
@@ -49,11 +49,11 @@ como.2024.shot.stats.subtitle <- paste0(
 )
 
 
-# Create the minimal modern half-pitch shot map
+# Create the half-pitch shot map (minimal)
 ggplot(como.2024.team.shot) +
   
-  # Add a clean white pitch with minimal lines
-  annotate_pitch(colour = "grey90", fill = "#FCFCF9", limits = FALSE) + #grey90
+  # Add a ivory white shade pitch with minimal lines
+  annotate_pitch(colour = "grey90", fill = "#FCFCF9", limits = FALSE) + 
   
   # Plot all non-goal shots in grey first (bottom layer)
   geom_point(data = filter(como.2024.team.shot, result != "Goal"),
@@ -74,7 +74,7 @@ ggplot(como.2024.team.shot) +
   # Reverse Y-axis for correct orientation
   scale_y_reverse() +
   
-  # Minimal modern theme
+  # minimal, remove axes, grids, legends
   theme_void() +
   theme(
     plot.margin = margin(t = 20, r = 20, b = 20, l = 20, unit = "pt"),
@@ -82,7 +82,7 @@ ggplot(como.2024.team.shot) +
     plot.subtitle = element_text(margin = margin(t = 8, b = 15), size = 13)
   ) +
   
-  # Clean minimal titles
+  # minimal titles
   labs(
     title = "Como 1907 — 2024-25 — Team Shot Map", 
     subtitle = como.2024.shot.stats.subtitle
@@ -93,7 +93,7 @@ ggplot(como.2024.team.shot) +
            label = paste0("*", como.2024.shots.not.shown, " shots from defensive half not shown"),      # paste0()
            size = 5, color = "grey50", hjust = 1) +
   
-  # Add text showing hidden shots count
+  # Add text 
   annotate("text", x = 51, y = 3, 
            label = "Goals in green, other shots in grey",   
            size = 5, color = "grey50", hjust = 0) 
