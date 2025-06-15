@@ -99,4 +99,4 @@ ggplot(como.2024.team.shot) +
            size = 5, color = "grey50", hjust = 0) 
 ```
 
-![](como-1907-2024-shot-map_files/figure-commonmark/Como%201907%20—%202024-25%20—%20shot%20map-1.png)
+![](como-1907-2024-shot-map_files/figure-commonmark/shot-map-1.png)
