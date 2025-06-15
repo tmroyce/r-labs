@@ -100,3 +100,8 @@ ggplot(como.2024.team.shot) +
 ```
 
 ![](como-1907-2024-shot-map_files/figure-commonmark/shot-map-1.png)
+
+Reference:
+
+- [worldfootballR](https://jaseziv.github.io/worldfootballR/)
+- [ggsoccer](https://github.com/Torvaney/ggsoccer)
