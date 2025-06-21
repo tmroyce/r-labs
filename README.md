@@ -13,6 +13,8 @@ a space where I explore R, one step at a time.
 - **`modeling/`** - Linear regression, machine learning algorithms
 - **`projects/`** - Practice projects combining multiple concepts
 
+- **`data/`** - dataset used in notes
+
 ### Tools and Packages
 
 ### Resources
