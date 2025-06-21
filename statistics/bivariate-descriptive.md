@@ -1,5 +1,6 @@
 # Filter, Order, and Bivariate Descriptive Statistics
 Michael Royce
+2025-06-20
 
 - [Prerequisites](#prerequisites)
 - [1. Ordering Data by Column Values](#1-ordering-data-by-column-values)
@@ -19,9 +20,6 @@ groups.
 
 ### Prerequisites
 
-Load the necessary libraries and assume we have an enhanced dataset to
-work with:
-
 ``` r
 # Load required libraries
 library(tidyverse)  # dplyr, For data manipulation (arrange, filter, group_by)
@@ -31,19 +29,20 @@ library(gtsummary)  # For table summary functions
 
 ``` r
 # Load the epl25 dataset
-epl25 <- readRDS(here("rdas", "epl25.rda"))  # Loads the dataset from rdas folder
+epl25 <- readRDS(here("data", "raw", "epl_2024_25.rds"))  # Loads the dataset from rdas folder
 
 # check data
 glimpse(epl25)
 ```
 
     Rows: 702
-    Columns: 12
+    Columns: 13
+    $ ...1                     <dbl> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14…
     $ Squad                    <chr> "Liverpool", "Liverpool", "Liverpool", "Liver…
     $ Player                   <chr> "Mohamed Salah", "Virgil van Dijk", "Ryan Gra…
     $ Nation                   <chr> "EGY", "NED", "NED", "ARG", "FRA", "HUN", "SC…
     $ Pos                      <chr> "FW", "DF", "MF", "MF", "DF", "MF", "DF", "GK…
-    $ Age                      <chr> "32", "33", "22", "25", "25", "23", "30", "31…
+    $ Age                      <dbl> 32, 33, 22, 25, 25, 23, 30, 31, 27, 25, 25, 2…
     $ Gls                      <dbl> 29, 3, 0, 5, 1, 6, 0, 0, 13, 3, 10, 3, 6, 0, …
     $ Ast                      <dbl> 18, 1, 4, 5, 2, 6, 1, 0, 5, 6, 4, 3, 3, 0, 1,…
     $ MP                       <dbl> 38, 37, 37, 35, 31, 36, 33, 28, 36, 33, 35, 3…
@@ -56,42 +55,22 @@ glimpse(epl25)
 head(epl25, 11)
 ```
 
-           Squad                 Player Nation Pos Age Gls Ast MP
-    1  Liverpool          Mohamed Salah    EGY  FW  32  29  18 38
-    2  Liverpool        Virgil van Dijk    NED  DF  33   3   1 37
-    3  Liverpool       Ryan Gravenberch    NED  MF  22   0   4 37
-    4  Liverpool    Alexis Mac Allister    ARG  MF  25   5   5 35
-    5  Liverpool        Ibrahima Konaté    FRA  DF  25   1   2 31
-    6  Liverpool     Dominik Szoboszlai    HUN  MF  23   6   6 36
-    7  Liverpool       Andrew Robertson    SCO  DF  30   0   1 33
-    8  Liverpool                Alisson    BRA  GK  31   0   0 28
-    9  Liverpool              Luis Díaz    COL  FW  27  13   5 36
-    10 Liverpool Trent Alexander-Arnold    ENG  DF  25   3   6 33
-    11 Liverpool             Cody Gakpo    NED  FW  25  10   4 35
-       Starts_Playing_Time Min_Playing_Time Mins_Per_90_Playing_Time
-    1                   38             3371                     37.5
-    2                   37             3330                     37.0
-    3                   37             3160                     35.1
-    4                   30             2599                     28.9
-    5                   30             2560                     28.4
-    6                   29             2491                     27.7
-    7                   29             2482                     27.6
-    8                   28             2508                     27.9
-    9                   28             2399                     26.7
-    10                  28             2365                     26.3
-    11                  23             1935                     21.5
-                                                          PlayerURL
-    1           https://fbref.com/en/players/e342ad68/Mohamed-Salah
-    2         https://fbref.com/en/players/e06683ca/Virgil-van-Dijk
-    3        https://fbref.com/en/players/b8e740fb/Ryan-Gravenberch
-    4     https://fbref.com/en/players/83d074ff/Alexis-Mac-Allister
-    5         https://fbref.com/en/players/5ed9b537/Ibrahima-Konate
-    6      https://fbref.com/en/players/934e1968/Dominik-Szoboszlai
-    7        https://fbref.com/en/players/2e4f5f03/Andrew-Robertson
-    8                 https://fbref.com/en/players/7a2e46a8/Alisson
-    9               https://fbref.com/en/players/4a1a9578/Luis-Diaz
-    10 https://fbref.com/en/players/cd1acf9d/Trent-Alexander-Arnold
-    11             https://fbref.com/en/players/1971591f/Cody-Gakpo
+    # A tibble: 11 × 13
+        ...1 Squad   Player Nation Pos     Age   Gls   Ast    MP Starts_Playing_Time
+       <dbl> <chr>   <chr>  <chr>  <chr> <dbl> <dbl> <dbl> <dbl>               <dbl>
+     1     1 Liverp… Moham… EGY    FW       32    29    18    38                  38
+     2     2 Liverp… Virgi… NED    DF       33     3     1    37                  37
+     3     3 Liverp… Ryan … NED    MF       22     0     4    37                  37
+     4     4 Liverp… Alexi… ARG    MF       25     5     5    35                  30
+     5     5 Liverp… Ibrah… FRA    DF       25     1     2    31                  30
+     6     6 Liverp… Domin… HUN    MF       23     6     6    36                  29
+     7     7 Liverp… Andre… SCO    DF       30     0     1    33                  29
+     8     8 Liverp… Aliss… BRA    GK       31     0     0    28                  28
+     9     9 Liverp… Luis … COL    FW       27    13     5    36                  28
+    10    10 Liverp… Trent… ENG    DF       25     3     6    33                  28
+    11    11 Liverp… Cody … NED    FW       25    10     4    35                  23
+    # ℹ 3 more variables: Min_Playing_Time <dbl>, Mins_Per_90_Playing_Time <dbl>,
+    #   PlayerURL <chr>
 
 ``` r
 # Select variables of interest, convert Age to numeric and create age groups as factor directly
@@ -118,11 +97,13 @@ epl25 %>%
   count(age_group, sort = TRUE)
 ```
 
-        age_group   n
-    1       23-30 340
-    2    Under 23 266
-    3         30+  89
-    4 Unknown age   7
+    # A tibble: 4 × 2
+      age_group       n
+      <fct>       <int>
+    1 23-30         340
+    2 Under 23      266
+    3 30+            89
+    4 Unknown age     7
 
 ``` r
 glimpse(epl25)
@@ -143,18 +124,20 @@ glimpse(epl25)
 head(epl25, 11)
 ```
 
-           Squad                 Player Nation Pos Age Gls Ast age_group
-    1  Liverpool          Mohamed Salah    EGY  FW  32  29  18       30+
-    2  Liverpool        Virgil van Dijk    NED  DF  33   3   1       30+
-    3  Liverpool       Ryan Gravenberch    NED  MF  22   0   4  Under 23
-    4  Liverpool    Alexis Mac Allister    ARG  MF  25   5   5     23-30
-    5  Liverpool        Ibrahima Konaté    FRA  DF  25   1   2     23-30
-    6  Liverpool     Dominik Szoboszlai    HUN  MF  23   6   6     23-30
-    7  Liverpool       Andrew Robertson    SCO  DF  30   0   1     23-30
-    8  Liverpool                Alisson    BRA  GK  31   0   0       30+
-    9  Liverpool              Luis Díaz    COL  FW  27  13   5     23-30
-    10 Liverpool Trent Alexander-Arnold    ENG  DF  25   3   6     23-30
-    11 Liverpool             Cody Gakpo    NED  FW  25  10   4     23-30
+    # A tibble: 11 × 8
+       Squad     Player                 Nation Pos     Age   Gls   Ast age_group
+       <chr>     <chr>                  <chr>  <chr> <dbl> <dbl> <dbl> <fct>    
+     1 Liverpool Mohamed Salah          EGY    FW       32    29    18 30+      
+     2 Liverpool Virgil van Dijk        NED    DF       33     3     1 30+      
+     3 Liverpool Ryan Gravenberch       NED    MF       22     0     4 Under 23 
+     4 Liverpool Alexis Mac Allister    ARG    MF       25     5     5 23-30    
+     5 Liverpool Ibrahima Konaté        FRA    DF       25     1     2 23-30    
+     6 Liverpool Dominik Szoboszlai     HUN    MF       23     6     6 23-30    
+     7 Liverpool Andrew Robertson       SCO    DF       30     0     1 23-30    
+     8 Liverpool Alisson                BRA    GK       31     0     0 30+      
+     9 Liverpool Luis Díaz              COL    FW       27    13     5 23-30    
+    10 Liverpool Trent Alexander-Arnold ENG    DF       25     3     6 23-30    
+    11 Liverpool Cody Gakpo             NED    FW       25    10     4 23-30    
 
 ### 1. Ordering Data by Column Values
 
@@ -168,30 +151,20 @@ epl25 %>%
   head(11)          # Shows only the first 11 rows
 ```
 
-                         Squad                Player Nation Pos Age Gls Ast
-    1   Brighton & Hove Albion          Harry Howell    ENG  FW  15   0   0
-    2        Tottenham Hotspur Luca Williams Barnett    ENG  FW  15  NA  NA
-    3                  Arsenal           Jack Porter    ENG  GK  16  NA  NA
-    4                  Chelsea       Shumaira Mheuka    ENG  MF  16   0   0
-    5   Brighton & Hove Albion      Freddie Simmonds    ENG  DF  16  NA  NA
-    6        Manchester United   Chidozie Obi-Martin    DEN  FW  16   0   0
-    7        Manchester United       Godwill Kukonki    ENG  DF  16  NA  NA
-    8  Wolverhampton Wanderers        Wesley Okoduwa    ENG  FW  16  NA  NA
-    9        Tottenham Hotspur           Mikey Moore    ENG  FW  16   0   1
-    10       Tottenham Hotspur         Malachi Hardy    ENG  DF  16  NA  NA
-    11               Liverpool           Amara Nallo    ENG  DF  17  NA  NA
-       age_group
-    1   Under 23
-    2   Under 23
-    3   Under 23
-    4   Under 23
-    5   Under 23
-    6   Under 23
-    7   Under 23
-    8   Under 23
-    9   Under 23
-    10  Under 23
-    11  Under 23
+    # A tibble: 11 × 8
+       Squad                   Player       Nation Pos     Age   Gls   Ast age_group
+       <chr>                   <chr>        <chr>  <chr> <dbl> <dbl> <dbl> <fct>    
+     1 Brighton & Hove Albion  Harry Howell ENG    FW       15     0     0 Under 23 
+     2 Tottenham Hotspur       Luca Willia… ENG    FW       15    NA    NA Under 23 
+     3 Arsenal                 Jack Porter  ENG    GK       16    NA    NA Under 23 
+     4 Chelsea                 Shumaira Mh… ENG    MF       16     0     0 Under 23 
+     5 Brighton & Hove Albion  Freddie Sim… ENG    DF       16    NA    NA Under 23 
+     6 Manchester United       Chidozie Ob… DEN    FW       16     0     0 Under 23 
+     7 Manchester United       Godwill Kuk… ENG    DF       16    NA    NA Under 23 
+     8 Wolverhampton Wanderers Wesley Okod… ENG    FW       16    NA    NA Under 23 
+     9 Tottenham Hotspur       Mikey Moore  ENG    FW       16     0     1 Under 23 
+    10 Tottenham Hotspur       Malachi Har… ENG    DF       16    NA    NA Under 23 
+    11 Liverpool               Amara Nallo  ENG    DF       17    NA    NA Under 23 
 
 To reverse the order and see top goalscorers first:
 
@@ -202,30 +175,20 @@ epl25 %>%
   head(11)                # Shows only the first 11 rows
 ```
 
-                         Squad               Player Nation   Pos Age Gls Ast
-    1                Liverpool        Mohamed Salah    EGY    FW  32  29  18
-    2         Newcastle United       Alexander Isak    SWE    FW  24  23   6
-    3          Manchester City       Erling Haaland    NOR    FW  24  22   3
-    4        Nottingham Forest           Chris Wood    NZL    FW  32  20   3
-    5                Brentford         Bryan Mbeumo    CMR    FW  24  20   7
-    6                Brentford          Yoane Wissa    COD    FW  27  19   4
-    7              Aston Villa        Ollie Watkins    ENG    FW  28  16   8
-    8                  Chelsea          Cole Palmer    ENG MF,FW  22  15   8
-    9  Wolverhampton Wanderers        Matheus Cunha    BRA MF,FW  25  15   6
-    10          Crystal Palace Jean-Philippe Mateta    FRA    FW  27  14   2
-    11 Wolverhampton Wanderers Jørgen Strand Larsen    NOR    FW  24  14   4
-       age_group
-    1        30+
-    2      23-30
-    3      23-30
-    4        30+
-    5      23-30
-    6      23-30
-    7      23-30
-    8   Under 23
-    9      23-30
-    10     23-30
-    11     23-30
+    # A tibble: 11 × 8
+       Squad                   Player       Nation Pos     Age   Gls   Ast age_group
+       <chr>                   <chr>        <chr>  <chr> <dbl> <dbl> <dbl> <fct>    
+     1 Liverpool               Mohamed Sal… EGY    FW       32    29    18 30+      
+     2 Newcastle United        Alexander I… SWE    FW       24    23     6 23-30    
+     3 Manchester City         Erling Haal… NOR    FW       24    22     3 23-30    
+     4 Nottingham Forest       Chris Wood   NZL    FW       32    20     3 30+      
+     5 Brentford               Bryan Mbeumo CMR    FW       24    20     7 23-30    
+     6 Brentford               Yoane Wissa  COD    FW       27    19     4 23-30    
+     7 Aston Villa             Ollie Watki… ENG    FW       28    16     8 23-30    
+     8 Chelsea                 Cole Palmer  ENG    MF,FW    22    15     8 Under 23 
+     9 Wolverhampton Wanderers Matheus Cun… BRA    MF,FW    25    15     6 23-30    
+    10 Crystal Palace          Jean-Philip… FRA    FW       27    14     2 23-30    
+    11 Wolverhampton Wanderers Jørgen Stra… NOR    FW       24    14     4 23-30    
 
 `arrange()` orders rows, and `desc()` reverses the order to descending.
 
@@ -244,8 +207,10 @@ forwards %>%
   summarize(mean_goals = mean(Gls, na.rm = TRUE))
 ```
 
+    # A tibble: 1 × 1
       mean_goals
-    1   5.317647
+           <dbl>
+    1       5.32
 
 `filter()` selects rows based on logical conditions. The == operator
 tests for equality.
