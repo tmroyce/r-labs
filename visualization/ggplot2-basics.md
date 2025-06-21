@@ -305,3 +305,5 @@ frauen_bundesliga_2024_25 %>%
 - Use clean themes like theme_minimal()
 
 Reference:
+
+- [ggplot2](https://rafalab.dfci.harvard.edu/dsbook-part-1/dataviz/ggplot2.html)
